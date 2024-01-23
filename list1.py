@@ -16,7 +16,6 @@ print("Li3=",Li3)
 Li4=[10,20,10,30,10,10,40,50,10]
 print("Li4=",Li4)
 
-
 #Supports both positive and negative indexing:
 
 #        0  1  2  3  4  5  6  7  8  9  
@@ -40,8 +39,6 @@ print("marks[:8:]=",marks[:8:])
 print("marks[::]=",marks[::])
 print("marks[::2]=",marks[::2])
 
-
-
 #Buil in function:
 marks = [100,20,90,30,60,40,50,70,80]
 
@@ -52,3 +49,5 @@ print("sum=", sum(marks))
 print("len=", len(marks))
 print("sorted=", sorted(marks))
 print("sorted_rev=", sorted(marks, reverse = True))
+
+
