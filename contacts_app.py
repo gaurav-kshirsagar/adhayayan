@@ -34,14 +34,17 @@ while True:
         else:
             print(contacts)
     elif ch == 2:
-        mob = int(input("Enter the mobile number"))
-        name = input("Enter the name")
-        if mob in contacts:
-            print('Conact Alrady exist!')
-        else:
-            contacts[mob]= name
-            print('Contact Added!')
-        print(contacts)
+        while True:
+            mob = input("Enter the mobile number 10-digit")
+            name = input("Enter the name")
+            if len(mob) != 10 or  (mob) in contacts:
+                print("Invalid mobile number. Please enter a 10-digit number. Or Mob.No already exist")
+                break        
+            else:
+                contacts[mob]= name
+                print('Contact Added!')
+                print(contacts)
+                break
     elif ch == 3:
         mob = int(input("Enter the mobile number which you want to delete"))
         is_present = contacts.get(mob)
