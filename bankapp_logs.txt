@@ -1,0 +1,11 @@
+
+
+[2024-03-04 15:05:26.212034] BankApp Started
+[2024-03-04 15:05:33.043863] User have chossen 1
+[2024-03-04 15:05:33.059863] User performed balance check operation
+[2024-03-04 15:05:43.696557] User have chossen 2
+[2024-03-04 15:05:47.543366] User Deposited amount 1000
+[2024-03-04 15:05:53.151511] User have chossen 3
+[2024-03-04 15:05:55.329400] User Withfrawn amount 200
+[2024-03-04 15:05:58.383408] User have chossen 4
+[2024-03-04 15:05:58.403201] User closed the Application
