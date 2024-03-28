@@ -1,0 +1,104 @@
+How to Connect to MySQL Database in Python
+
+1. Install library mysqlclient.
+	pip install mysqlclient --> we have to externally download and
+				    install this library as it do not come with standard library of python.
+
+2. Import MySQLdb package
+	import MySQLdb
+
+3. Use the connect() function
+	conn = MySQLdb.connect( host="localhost",  user="yourusername",  password="yourpassword", db="db_name")	
+	
+	Use the connect() function of the MySQL Connector class with the required arguments to connect MySQL. 
+	It would return a MySQLConnection object if the connection established successfully
+
+4. Use the cursor() method
+	curs = conn.cursor()
+	Cursor class object
+	Use the cursor() method of a MySQLConnection object to create a cursor object to perform
+	 various SQL operations.
+
+5. Use the execute() method
+	query = 'select * from tbl_name'
+	curs.execute(query)
+	The execute() methods run the SQL query and return the result.
+	conn.commit()
+	or
+	conn.autocommit('on')
+	is used to permanently save the changes done in the transaction in tables/databases.
+
+6. Close connection.
+	conn.close()
+	use connection.close() method to close open connections after your work completes.
+
+
+
+
+=============================================================================================
+
+
+
+import MySQLdb
+
+conn = MySQLdb.connect(host='localhost', user='root', password='root', db='pdbc')
+curs = conn.cursor()
+conn.autocommit('on')
+
+##query = 'create table student (roll int primary key auto_increment,'\
+##        'fname varchar(20), marks float)'
+##curs.execute(query)
+##print('table created')
+
+def add_student():
+    roll = int(input('Enter roll number here:'))
+    fname = input('Enter fname')
+    marks = float(input('Enter marks here'))
+    query = f'insert into student values ({roll}, "{fname}", {marks})'
+    curs.execute(query)
+    print(f'record of {fname} added')
+
+
+def show_student_info():
+    query = 'select * from student'
+    curs.execute(query)
+    students = curs.fetchall()
+    print(students)
+
+
+def delete_student_info():
+    roll = int(input('Enter roll  here'))
+    query = f'delete from student where roll={roll}'
+    curs.execute(query)
+    print('record deleted')
+
+
+def update_student_info():
+    roll = int(input('Enter roll  here'))
+    ch = int(input('What do you wants to update 1.name 2.marks'))
+    if ch == 1:
+        new_name = input('Enter new name')
+        query = f'update student set fname="{new_name}" where roll={roll}'
+    elif ch == 2:
+        new_marks = float(input('Enter new marks'))
+        query = f'update student set marks={new_marks} where roll={roll}'
+    curs.execute(query)
+
+
+while True:
+    ch = int(input('Enter your choice'))
+    match ch:
+        case 1:
+            add_student()
+        case 2:
+            show_student_info()
+        case 3:
+            update_student_info()
+        case 4:
+            delete_student_info()
+        case 5:
+            print('Exit')
+            break
+        case _:
+            print('plz enter correct number')
+conn.close()
